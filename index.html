@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Анатомия: кости нижних конечностей</title>
+<style>
+:root{--ink:#0d2a4a;--mid:#3f6490;--blue:#1e6fd9;--sky:#dbeafe;--ice:#f2f8ff;--white:#fff;--line:#c4d9f2;--ok:#1a9a6b;--bad:#d9453b}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--ice);color:var(--ink);font:17px/1.55 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+header{background:var(--blue);color:#fff;padding:28px 20px 0}
+.wrap{max-width:820px;margin:0 auto}
+header h1{margin:0;font-size:1.7rem;line-height:1.2;letter-spacing:-.01em}
+header p{margin:6px 0 18px;opacity:.88}
+nav{display:flex;gap:4px;overflow-x:auto}
+nav button{flex:1;min-width:max-content;border:0;background:rgba(255,255,255,.16);color:#fff;font:inherit;font-weight:600;padding:11px 16px;border-radius:12px 12px 0 0;cursor:pointer}
+nav button[aria-selected=true]{background:var(--ice);color:var(--blue)}
+main{padding:22px 20px 60px}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+section[hidden]{display:none}
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:1.08rem;color:var(--blue)}
+.card p{margin:6px 0}
+.tip{background:var(--sky);border-radius:10px;padding:9px 12px;margin:10px 0 0}
+.say{border:1px solid var(--line);background:var(--ice);color:var(--blue);border-radius:999px;padding:5px 12px;font:inherit;font-size:.9rem;cursor:pointer;margin-top:8px}
+.say:hover{background:var(--sky)}
+.btn{border:0;background:var(--blue);color:#fff;font:inherit;font-weight:600;padding:11px 20px;border-radius:12px;cursor:pointer}
+.btn.alt{background:var(--sky);color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.lat{font-style:italic;color:var(--mid)}
+/* схемы */
+.draw{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:700px){.draw{grid-template-columns:1.1fr 1fr}}
+.pick{display:flex;gap:8px;margin-bottom:12px}
+.pick button{border:1px solid var(--line);background:var(--white);color:var(--ink);font:inherit;padding:8px 16px;border-radius:999px;cursor:pointer}
+.pick button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+svg{width:100%;height:auto;background:var(--white);border:1px solid var(--line);border-radius:16px}
+.part{fill:#bcd7f7;stroke:var(--blue);stroke-width:2.5;cursor:pointer;transition:fill .15s}
+.part:hover{fill:#8dbbf2}
+.part.on{fill:var(--blue)}
+.hole{fill:#fff}
+.hole:hover{fill:#e6f0fd}
+.part.crest,.part.crest:hover{fill:none;stroke-width:9;stroke:#5a9be8}
+.part.crest:hover{stroke:#1e6fd9}
+.ldr{stroke:var(--mid);stroke-width:1.2;fill:none}
+.nolab .labs{display:none}
+svg text{font:600 13px "Segoe UI",Arial,sans-serif;fill:var(--ink);pointer-events:none}
+svg text.lab{pointer-events:auto;cursor:pointer}
+svg text.lab:hover{fill:var(--blue)}
+#info h2{margin:0;font-size:1.3rem}
+#info .empty{color:var(--mid)}
+/* карточки и тест */
+.flip{min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;font-size:1.35rem;font-weight:600}
+.flip small{font-weight:400;font-size:.95rem;color:var(--mid);margin-top:8px;max-width:520px}
+.bar{height:8px;background:var(--sky);border-radius:99px;overflow:hidden;margin:10px 0 16px}
+.bar i{display:block;height:100%;background:var(--blue);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:inherit;padding:12px 14px;border-radius:12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt.ok{border-color:var(--ok);background:#e5f7ef}
+.opt.no{border-color:var(--bad);background:#fdeceb}
+.meta{color:var(--mid);font-size:.92rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* === веселее и удобнее === */
+header{background:linear-gradient(135deg,#1e6fd9,#4aa8f7);padding:30px 20px 26px;border-radius:0 0 28px 28px}
+header h1{font-size:1.75rem}
+main{padding-bottom:110px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));gap:4px;box-shadow:0 -4px 18px rgba(30,111,217,.14)}
+nav button{flex:1;min-width:0;background:transparent;color:var(--mid);border-radius:16px;padding:6px 2px;font-size:.78rem;display:flex;flex-direction:column;align-items:center;gap:1px}
+nav button span{font-size:1.45rem;line-height:1.1}
+nav button[aria-selected=true]{background:var(--sky);color:var(--blue)}
+.card{border-radius:20px;box-shadow:0 6px 18px rgba(30,111,217,.08)}
+.btn,.say,.opt{transition:transform .1s}
+.btn:active,.say:active,.opt:active{transform:scale(.96)}
+.btn{border-radius:14px;box-shadow:0 3px 0 #1455a8}
+.btn.alt{box-shadow:0 3px 0 #b5d0f1}
+#info{position:sticky;top:8px;z-index:5;min-height:96px;margin-bottom:12px}
+.pic{position:relative;max-width:400px;margin:0 auto 10px}
+.pic img{display:block;width:100%;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.dot{position:absolute;transform:translate(-50%,-50%);width:27px;height:27px;border-radius:50%;border:2px solid var(--blue);background:rgba(255,255,255,.94);color:var(--blue);font:700 12px "Segoe UI",Arial,sans-serif;padding:0;cursor:pointer}
+.dot:hover{background:var(--sky)}
+.dot.on{background:var(--blue);color:#fff}
+.dot.okk{background:var(--ok);border-color:var(--ok);color:#fff}
+.dot.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>🦴 Кости нижних конечностей</h1>
+<p>Пояс и свободная часть: учим по картинке, карточкам и тестам</p>
+<nav role="tablist" id="tabs"></nav>
+</div></header>
+<main><div class="wrap">
+
+<section id="t-cheat"></section>
+
+<section id="t-atlas" hidden>
+<div class="row" style="margin:0 0 12px;align-items:center"><button class="btn" id="agame">🎯 Угадай часть</button><span class="meta">Нажимай на номера на рисунке</span></div>
+<div class="card" id="info"></div>
+<div class="pic" id="pic"><img src="atlas.jpg" alt="Кости нижней конечности, вид спереди"></div>
+<p class="meta" style="text-align:center">Рисунок: «Кости нижней конечности. Вид спереди», рис. 152.</p>
+</section>
+
+<section id="t-cards" hidden>
+<div class="meta" id="cprog"></div>
+<div class="bar"><i id="cbar"></i></div>
+<div class="card flip" id="flip" tabindex="0" role="button" aria-label="Перевернуть карточку"></div>
+<div class="row">
+<button class="btn alt" id="cflip">Перевернуть</button>
+<button class="btn" id="cknow">Знаю</button>
+<button class="btn alt" id="cagain">Ещё раз</button>
+<button class="say" id="cspeak" style="margin:0">🔊 Озвучить</button>
+<button class="btn alt" id="creset">Сбросить</button>
+</div>
+</section>
+
+<section id="t-quiz" hidden></section>
+
+</div></main>
+
+<script>
+/* ===== ДАННЫЕ. Новая тема = новый такой же блок ===== */
+const D={
+coxae:{ru:'Тазовая кость',lat:'os coxae',t:'Парная кость пояса нижней конечности. Состоит из подвздошной, лобковой и седалищной костей, которые срастаются в области вертлужной впадины. Две тазовые кости вместе с крестцом образуют таз.'},
+ilium:{ru:'Подвздошная кость',lat:'os ilium',t:'Самая крупная из трёх костей таза. Состоит из тела и широкого крыла, верхний край которого называется подвздошным гребнем.'},
+pubis:{ru:'Лобковая кость',lat:'os pubis',t:'Лежит спереди и внизу. Состоит из тела и двух ветвей, верхней и нижней. Спереди две лобковые кости соединяются лобковым симфизом.'},
+ischium:{ru:'Седалищная кость',lat:'os ischii',t:'Лежит сзади и внизу. Состоит из тела и ветви. На ней находится седалищный бугор.'},
+acetab:{ru:'Вертлужная впадина',lat:'acetabulum',t:'Глубокая впадина на наружной поверхности тазовой кости, в неё входит головка бедренной кости. В образовании впадины участвуют все три кости.'},
+obtur:{ru:'Запирательное отверстие',lat:'foramen obturatum',t:'Большое отверстие между лобковой и седалищной костями. Почти целиком закрыто запирательной мембраной.'},
+crest:{ru:'Подвздошный гребень',lat:'crista iliaca',t:'Верхний край крыла подвздошной кости. Хорошо прощупывается через кожу на боку, там, где обычно кладут руки на пояс.'},
+tuber:{ru:'Седалищный бугор',lat:'tuber ischiadicum',t:'Утолщение на седалищной кости. Именно на него мы опираемся, когда сидим.'},
+symph:{ru:'Лобковый симфиз',lat:'symphysis pubica',t:'Хрящевое соединение двух лобковых костей спереди, по средней линии тела.'},
+incis:{ru:'Большая седалищная вырезка',lat:'incisura ischiadica major',t:'Крупная вырезка на заднем крае тазовой кости, на границе подвздошной и седалищной костей. Через неё проходят сосуды, нервы и грушевидная мышца.'},
+auric:{ru:'Ушковидная поверхность',lat:'facies auricularis',t:'Поверхность подвздошной кости, которой она соединяется с крестцом (крестцово-подвздошный сустав).'},
+femur:{ru:'Бедренная кость',lat:'femur',t:'Самая длинная и прочная трубчатая кость человека. Верхним концом входит в вертлужную впадину, нижним участвует в коленном суставе.'},
+head:{ru:'Головка бедренной кости',lat:'caput femoris',t:'Шаровидная верхняя часть бедренной кости. Входит в вертлужную впадину и образует тазобедренный сустав. На ней есть ямка головки для связки.'},
+neck:{ru:'Шейка бедренной кости',lat:'collum femoris',t:'Соединяет головку с телом, образуя с ним угол около 125–130°. Частое место перелома у пожилых людей.'},
+gtroch:{ru:'Большой вертел',lat:'trochanter major',t:'Крупный бугор вверху и снаружи, хорошо прощупывается на боку бедра. К нему прикрепляются ягодичные мышцы.'},
+ltroch:{ru:'Малый вертел',lat:'trochanter minor',t:'Небольшой бугор внизу и с внутренней стороны, ниже шейки. К нему прикрепляется подвздошно-поясничная мышца.'},
+shaft:{ru:'Тело бедренной кости',lat:'corpus femoris',t:'Цилиндрическая часть, слегка изогнутая вперёд. Сзади на ней проходит шероховатая линия, место прикрепления мышц.'},
+cond:{ru:'Мыщелки бедренной кости',lat:'condylus medialis et lateralis',t:'Два утолщения на нижнем конце кости, медиальный и латеральный. Сочленяются с большеберцовой костью. Между ними сзади лежит межмыщелковая ямка.'},
+linea:{ru:'Шероховатая линия',lat:'linea aspera',t:'Гребень на задней поверхности тела бедренной кости, к нему прикрепляются мышцы бедра.'},
+patella:{ru:'Надколенник',lat:'patella',t:'Самая крупная сесамовидная кость. Лежит в сухожилии четырёхглавой мышцы бедра и защищает коленный сустав спереди.'},
+tibia:{ru:'Большеберцовая кость',lat:'tibia',t:'Толстая медиальная кость голени, несёт основную нагрузку. Внизу заканчивается медиальной лодыжкой.'},
+fibula:{ru:'Малоберцовая кость',lat:'fibula',t:'Тонкая латеральная кость голени. Почти не несёт вес, служит для прикрепления мышц. Внизу заканчивается латеральной лодыжкой.'},
+sacrum:{ru:'Крестец',lat:'os sacrum',t:'Непарная кость из пяти сросшихся крестцовых позвонков. Вместе с двумя тазовыми костями образует таз.'},
+sij:{ru:'Крестцово-подвздошный сустав',lat:'articulatio sacroiliaca',t:'Малоподвижное соединение крестца с подвздошной костью по ушковидным поверхностям.'},
+pubsup:{ru:'Верхняя ветвь лобковой кости',lat:'ramus superior ossis pubis',t:'Идёт от тела лобковой кости к вертлужной впадине, образует верхний край запирательного отверстия.'},
+symsurf:{ru:'Симфизиальная поверхность лобковой кости',lat:'facies symphysialis',t:'Поверхность, которой лобковая кость обращена ко второй лобковой кости, здесь образуется лобковый симфиз.'},
+pubinf:{ru:'Нижняя ветвь лобковой кости',lat:'ramus inferior ossis pubis',t:'Идёт вниз и назад и срастается с ветвью седалищной кости.'},
+ischram:{ru:'Ветвь седалищной кости',lat:'ramus ossis ischii',t:'Идёт вверх и вперёд от седалищного бугра и соединяется с нижней ветвью лобковой кости.'},
+ischbody:{ru:'Тело седалищной кости',lat:'corpus ossis ischii',t:'Участвует в образовании вертлужной впадины, от него отходит ветвь седалищной кости.'},
+medepi:{ru:'Медиальный надмыщелок бедренной кости',lat:'epicondylus medialis femoris',t:'Бугорок над медиальным мыщелком, к нему крепятся связки и мышцы.'},
+latepi:{ru:'Латеральный надмыщелок бедренной кости',lat:'epicondylus lateralis femoris',t:'Бугорок над латеральным мыщелком, к нему крепятся связки и мышцы.'},
+tibmed:{ru:'Медиальный мыщелок большеберцовой кости',lat:'condylus medialis tibiae',t:'Внутренняя часть верхнего конца большеберцовой кости, сочленяется с мыщелком бедра.'},
+tiblat:{ru:'Латеральный мыщелок большеберцовой кости',lat:'condylus lateralis tibiae',t:'Наружная часть верхнего конца большеберцовой кости, рядом с ней головка малоберцовой.'},
+tibtub:{ru:'Бугристость большеберцовой кости',lat:'tuberositas tibiae',t:'Бугор спереди, ниже мыщелков. К нему прикрепляется связка надколенника.'},
+tibbody:{ru:'Тело большеберцовой кости',lat:'corpus tibiae',t:'Трёхгранная часть кости, передний край у неё острый и прощупывается под кожей.'},
+tibant:{ru:'Передний край большеберцовой кости',lat:'margo anterior tibiae',t:'Острый край спереди, который прощупывается под кожей.'},
+malmed:{ru:'Медиальная лодыжка',lat:'malleolus medialis',t:'Нижний конец большеберцовой кости с внутренней стороны, прощупывается у щиколотки.'},
+mallat:{ru:'Латеральная лодыжка',lat:'malleolus lateralis',t:'Нижний конец малоберцовой кости, снаружи. Лежит чуть ниже медиальной.'},
+fibhead:{ru:'Головка малоберцовой кости',lat:'caput fibulae',t:'Утолщённый верхний конец малоберцовой кости, сочленяется с латеральным мыщелком большеберцовой.'},
+phal:{ru:'Фаланги пальцев',lat:'phalanges',t:'Кости пальцев стопы: две у большого пальца и по три у остальных.'},
+mtt:{ru:'Кости плюсны',lat:'ossa metatarsi',t:'Пять длинных костей, нумеруются I–V от большого пальца.'},
+tars:{ru:'Кости предплюсны',lat:'ossa tarsi',t:'Семь костей: таранная, пяточная, ладьевидная, три клиновидные и кубовидная.'},
+ala:{ru:'Крыло подвздошной кости',lat:'ala ossis ilii',t:'Широкая верхняя часть подвздошной кости, её верхний край называется гребнем.'}
+};
+
+const CHEAT=[
+{h:'Что относится к поясу, что к свободной части',b:'<p><b>Пояс нижней конечности</b>: парная тазовая кость.</p><p><b>Свободная часть</b>: бедренная кость, надколенник, кости голени (2) и кости стопы (26).</p><p>Всего на одной ноге 31 кость: 1 + 1 + 1 + 2 + 26.</p>',s:'К поясу нижней конечности относится парная тазовая кость. Свободная часть: бедренная кость, надколенник, две кости голени и двадцать шесть костей стопы. Всего на одной ноге тридцать одна кость.'},
+{h:'Три кости, из которых сделана тазовая кость',b:'<p>Подвздошная, лобковая, седалищная. Срастаются у вертлужной впадины примерно к 14–16 годам.</p><div class="tip">💡 <b>Подвздошная</b> сверху: туда кладёшь руки на пояс. <b>Лобковая</b> спереди: рядом с лобком. <b>Седалищная</b> сзади-снизу: на ней сидишь.</div>',s:'Тазовая кость состоит из трёх костей: подвздошной, лобковой и седалищной. Подвздошная сверху, туда кладёшь руки на пояс. Лобковая спереди. Седалищная сзади и снизу, на ней сидишь.'},
+{h:'Бедренная кость: что где',b:'<p>Сверху вниз: головка, шейка, вертелы, тело, мыщелки.</p><div class="tip">💡 <b>Большой вертел</b> большой и снаружи, его щупаешь на боку. <b>Малый вертел</b> маленький и спрятан внутри и ниже.</div><div class="tip">💡 Шейка бедра: угол с телом около 125–130°. Тупой, как раскрытая книга.</div>',s:'У бедренной кости сверху вниз: головка, шейка, вертелы, тело и мыщелки. Большой вертел большой и снаружи, его прощупываешь на боку. Малый вертел маленький и находится внутри и ниже.'},
+{h:'Что с чем соединяется',b:'<p>Головка бедренной кости входит в вертлужную впадину: тазобедренный сустав.</p><p>Мыщелки бедра и большеберцовая кость: коленный сустав, спереди его закрывает надколенник.</p><p>Две лобковые кости спереди: лобковый симфиз. Подвздошная с крестцом: через ушковидную поверхность.</p>',s:'Головка бедренной кости входит в вертлужную впадину, это тазобедренный сустав. Мыщелки бедра и большеберцовая кость образуют коленный сустав, спереди его закрывает надколенник.'},
+{h:'Что можно прощупать у себя',b:'<p>Подвздошный гребень на боку, большой вертел на боку ниже, седалищный бугор в положении сидя, надколенник и передний край большеберцовой кости.</p><p>Проверь на себе: так анатомия запоминается быстрее.</p>',s:'Прощупать у себя можно подвздошный гребень на боку, большой вертел ниже на боку, седалищный бугор в положении сидя, надколенник и передний край большеберцовой кости.'}
+];
+
+/* ===== УТИЛИТЫ ===== */
+const $=s=>document.querySelector(s);
+const ids=Object.keys(D);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function say(t){if(!('speechSynthesis' in window)){alert('Озвучка не поддерживается в этом браузере');return}
+speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ru-RU';u.rate=.95;speechSynthesis.speak(u)}
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ===== ВКЛАДКИ ===== */
+const TABS=[['cheat','Шпаргалка','📖'],['atlas','Атлас','🦴'],['cards','Карточки','🃏'],['quiz','Тест','🎯']];
+TABS.forEach(([k,n,ic],i)=>{const b=document.createElement('button');b.role='tab';b.innerHTML='<span>'+ic+'</span>'+n;b.dataset.k=k;b.setAttribute('aria-selected',i==0);
+b.onclick=()=>show(k);$('#tabs').append(b)});
+function show(k){if('speechSynthesis' in window)speechSynthesis.cancel();
+TABS.forEach(([x])=>{$('#t-'+x).hidden=x!=k});
+document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.k==k));
+if(k=='quiz'&&!Q.on)startQuiz()}
+
+/* ===== ШПАРГАЛКА ===== */
+CHEAT.forEach((c,i)=>{const d=document.createElement('div');d.className='card';
+d.innerHTML=`<h3>${c.h}</h3>${c.b}<button class="say" data-i="${i}">🔊 Послушать</button>`;$('#t-cheat').append(d)});
+$('#t-cheat').onclick=e=>{const b=e.target.closest('.say');if(b)say(CHEAT[b.dataset.i].s)};
+
+/* ===== АТЛАС ===== */
+const HOT=[[1,143,50,'sacrum'],[2,155,81,'sij'],[3,155,105,'pubsup'],[4,155,121,'symsurf'],[5,155,136,'pubinf'],[6,155,155,'ischram'],[7,148,194,'tuber'],[8,149,216,'ischbody'],[9,148,308,'medepi'],[10,142,336,'tibmed'],[11,142,356,'tibtub'],[12,144,396,'tibbody'],[13,136,498,'malmed'],[14,40,527,'phal'],[15,57,511,'mtt'],[16,63,490,'tars'],[17,50,466,'mallat'],[18,47,437,'fibula'],[19,47,407,'tibant'],[20,39,338,'fibhead'],[21,39,321,'tiblat'],[22,42,309,'latepi'],[23,42,296,'patella'],[24,25,217,'femur'],[25,31,119,'gtroch'],[26,32,86,'neck'],[27,33,64,'head'],[28,33,47,'ala'],[29,75,23,'crest']];
+const pic=$('#pic'),INFO0='<p class="empty">Нажми на номер на рисунке: появятся название, латынь и пояснение, а голос всё прочитает.</p>';
+HOT.forEach(([n,x,y,id])=>{const b=document.createElement('button');b.className='dot';b.textContent=n;b.dataset.id=id;
+b.style.left=(x/165*100)+'%';b.style.top=(y/573*100)+'%';b.setAttribute('aria-label','Часть '+n);pic.append(b)});
+$('#info').innerHTML=INFO0;
+const clr=()=>document.querySelectorAll('.dot').forEach(x=>x.classList.remove('on','okk','bad'));
+let game=null;
+pic.onclick=e=>{const b=e.target.closest('.dot');if(!b)return;if(game)guess(b);else pickDot(b)};
+function pickDot(b){clr();b.classList.add('on');const d=D[b.dataset.id];
+$('#info').innerHTML=`<h2>${d.ru}</h2><div class="lat">${d.lat}</div><p>${d.t}</p><button class="say" id="again">🔊 Повторить</button>`;
+$('#again').onclick=()=>say(d.ru+'. '+d.t);say(d.ru+'. '+d.t)}
+function nextQ(){clr();game.lock=0;game.id=HOT[Math.floor(Math.random()*HOT.length)][3];const d=D[game.id];
+$('#info').innerHTML=`<div class="meta">Где на рисунке? Верно ${game.ok} из ${game.n}</div><h2>${d.ru}</h2><div class="lat">${d.lat}</div>`}
+function guess(b){if(game.lock)return;game.lock=1;game.n++;const ok=b.dataset.id==game.id;
+if(ok){game.ok++;b.classList.add('okk')}else{b.classList.add('bad');document.querySelector('.dot[data-id="'+game.id+'"]').classList.add('okk')}
+$('#info').innerHTML+=ok?'<p>🎉 Верно!</p>':`<p>🤔 Нет, это «${D[b.dataset.id].ru}». Правильный ответ подсвечен зелёным.</p>`;
+game.t=setTimeout(()=>game&&nextQ(),1900)}
+$('#agame').onclick=()=>{if(game){clearTimeout(game.t);game=null;$('#agame').textContent='🎯 Угадай часть';clr();$('#info').innerHTML=INFO0}
+else{game={ok:0,n:0};$('#agame').textContent='⏹ Закончить';nextQ()}};
+
+/* ===== КАРТОЧКИ ===== */
+let known=new Set(store.get('known_lower',[])),queue=[],cur=null,flipped=false;
+function buildQueue(){queue=shuffle(ids.filter(i=>!known.has(i)))}
+function nextCard(){if(!queue.length)buildQueue();cur=queue[0]||null;flipped=false;renderCard()}
+function renderCard(){const n=known.size,N=ids.length;
+$('#cprog').textContent=`Выучено ${n} из ${N}`;$('#cbar').style.width=(n/N*100)+'%';
+const f=$('#flip');
+if(!cur){f.innerHTML='Все карточки выучены 🎉<small>Нажми «Сбросить», чтобы повторить.</small>';return}
+const d=D[cur];
+f.innerHTML=flipped?`<span class="lat">${d.lat}</span><small>${d.t}</small>`:`${d.ru}<small>Что это на латыни? Нажми, чтобы проверить.</small>`}
+function flip(){if(cur){flipped=!flipped;renderCard()}}
+$('#flip').onclick=flip;$('#cflip').onclick=flip;
+$('#flip').onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();flip()}};
+$('#cknow').onclick=()=>{if(!cur)return;known.add(cur);store.set('known_lower',[...known]);queue.shift();nextCard()};
+$('#cagain').onclick=()=>{if(!cur)return;queue.push(queue.shift());nextCard()};
+$('#cspeak').onclick=()=>{if(cur)say(D[cur].ru+'. '+D[cur].t)};
+$('#creset').onclick=()=>{known=new Set();store.set('known_lower',[]);buildQueue();nextCard()};
+buildQueue();nextCard();
+
+/* ===== ТЕСТ ===== */
+const Q={on:false,list:[],i:0,score:0,st:0};
+function startQuiz(){Q.on=true;Q.i=0;Q.score=0;Q.st=0;
+Q.list=shuffle(ids).slice(0,8).map(id=>{const toLat=Math.random()<.5;
+const wrong=shuffle(ids.filter(x=>x!=id)).slice(0,3);
+return{id,toLat,opts:shuffle([id,...wrong])}});renderQ()}
+function renderQ(){const s=$('#t-quiz');
+if(Q.i>=Q.list.length){const p=Q.score/Q.list.length;
+s.innerHTML=`<div class="card"><h3>Результат: ${Q.score} из ${Q.list.length}</h3><p>${p==1?'🏆 Без ошибок. Отлично!':p>=.6?'👍 Неплохо. Ошибки лучше повторить на карточках.':'Пока рано. Пройди шпаргалку и карточки, потом пробуй снова.'}</p><div class="row"><button class="btn" id="qre">Пройти ещё раз</button></div></div>`;
+$('#qre').onclick=startQuiz;return}
+const q=Q.list[Q.i],d=D[q.id];
+s.innerHTML=`<div class="meta">Вопрос ${Q.i+1} из ${Q.list.length}${Q.st>1?`  🔥 ${Q.st} подряд`:""}</div><div class="bar"><i style="width:${Q.i/Q.list.length*100}%"></i></div>
+<div class="card"><h3>${q.toLat?`Как по-латыни: «${d.ru}»?`:`Что означает: <span class="lat">${d.lat}</span>?`}</h3><div id="opts"></div><p id="fb"></p><div class="row" id="nx"></div></div>`;
+q.opts.forEach(o=>{const b=document.createElement('button');b.className='opt';b.dataset.o=o;
+b.innerHTML=q.toLat?`<span class="lat">${D[o].lat}</span>`:D[o].ru;$('#opts').append(b)});
+$('#opts').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;
+const right=b.dataset.o==q.id;Q.st=right?Q.st+1:0;if(right)Q.score++;
+document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.o==q.id)x.classList.add('ok')});
+if(!right)b.classList.add('no');
+$('#fb').innerHTML=(right?'🎉 Верно! ':'🤔 Не совсем. ')+d.t;
+$('#nx').innerHTML='<button class="btn" id="go">Дальше</button>';$('#go').onclick=()=>{Q.i++;renderQ()}}}
+</script>
+</body>
+</html>
